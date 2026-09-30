@@ -186,15 +186,7 @@ fn paint_adjusted_with_mask(
     else {
         return;
     };
-    let _ = window.paint_image_fitted_masked(
-        visible,
-        fitted,
-        corner_radii,
-        source,
-        0,
-        false,
-        mask,
-    );
+    let _ = window.paint_image_fitted_masked(visible, fitted, corner_radii, source, 0, false, mask);
 }
 
 /// Paint the exact responsive crop used by the new-thread hero, without its
@@ -443,7 +435,9 @@ mod tests {
             assert_eq!((visible, fitted), (hero_visible, hero_fitted));
             assert_eq!(
                 fitted,
-                source_geometry(&source, viewport, adjustment).unwrap().bounds
+                source_geometry(&source, viewport, adjustment)
+                    .unwrap()
+                    .bounds
             );
         }
     }
